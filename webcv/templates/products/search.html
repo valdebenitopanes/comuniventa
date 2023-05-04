@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="col">
+        <p>Resultado de búsqueda</p>
+        {% include 'products/snippets/search-bar.html' %}
+        <br/>
+        <br/>
+        <hr>
+
+        <p><b>Resultado de búsqueda: {{query}}</b></p>
+        {% include 'products/snippets/list-of-products.html' %}
+    </div>
+{% endblock %}

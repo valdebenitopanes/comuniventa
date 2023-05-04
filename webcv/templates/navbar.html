@@ -1,0 +1,28 @@
+{% url 'login' as login %}
+{% url 'register' as register %}
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'index' %}">WEBCV</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        {% if user.is_authenticated %}
+          <div class="navbar-nav">
+            <a class="nav-link"  href="{% url 'logout' %}">Salir</a>
+            {% if is_seller %}
+                <a class="nav-link" href="{% url 'seller' %}">Mis productos</a>
+                <a class="nav-link" href="{% url 'create' %}">Crear productos</a>
+            {% endif %}
+          </div>
+        {% else %}
+            <div class="navbar-nav">
+                <a class="nav-link {% if request.path == 'login' %} active {%endif%}" href="{{ login }}">Login</a>
+                <a class="nav-link {% if request.path == 'register' %} active {%endif%}" href="{{ register }}">Registro</a>
+            </div>
+        {% endif %}
+   
+      </div>
+    </div>
+</nav>

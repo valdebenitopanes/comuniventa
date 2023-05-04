@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="col">
+  <div class="col-12 col-md-6 offset-md-3">  
+    <div class="card">  
+      <div class="card-body">  
+        <h2 class="mb-3">Login</h2>
+        <form method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="username" class="form-label">User Name</label>
+            <input
+              type="text"
+              name="username"
+              class="form-control"
+              id="username"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              name="password"
+              class="form-control"
+              id="password"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+          {% if messages %} 
+            {% for message in messages %} 
+              {% if message.tag == 'success' %}
+                <div class="alert alert-success">{{message}}</div>
+              {% else %}
+                {% if not has_logged_out %}
+                    <div class="alert alert-danger">{{message}}</div>
+                {% endif %}
+              {% endif %} 
+            {% endfor %} 
+          {% endif %}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+<!DOCTYPE html>

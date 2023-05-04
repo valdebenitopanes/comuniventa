@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="col">
+    <div class="">
+        <h1 class="h1">{{product.title}}</h1>
+        <p class="">price: $<span class="text-danger">{{product.price}}</span></p>
+        {% if product.image %}
+        <img src="{{product.image.url}}" alt={{product.title}} width='400px'/>
+        {% endif %}
+        <br>
+        <br>
+        <p class="">Description :    <br><br>
+            {{product.description}}</p>
+    </div> 
+</div>
+{% endblock  %}
